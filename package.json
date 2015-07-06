@@ -1,0 +1,17 @@
+{
+  "name": "toastio-connection",
+  "version": "0.0.0",
+  "description": "A wrapper for connection to a Toastio instance",
+  "main": "./index.js",
+  "files": [
+    "index.js"
+  ],
+  "scripts": {
+    "test": "vows test/*.js --verbose --spec"
+  },
+  "dependencies": {
+    "lodash": "^3.10.0",
+    "q": "^1.4.1",
+    "vows": "^0.8.1"
+  }
+}
