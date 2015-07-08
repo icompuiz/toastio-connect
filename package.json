@@ -11,7 +11,9 @@
   },
   "dependencies": {
     "lodash": "^3.10.0",
-    "q": "^1.4.1",
+    "q": "^1.4.1"
+  },
+  "devDependencies": {
     "vows": "^0.8.1"
   }
 }
