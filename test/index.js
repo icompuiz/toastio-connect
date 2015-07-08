@@ -23,7 +23,9 @@ vows
                 assert.equal(connection.password, fixtures.password);
             },
             'member port should be set': function(connection) {
+              if (fixtures.port) {
                 assert.equal(connection.port, fixtures.port);
+              }
             },
             'and Given a request to login to Toastio': {
 
@@ -78,7 +80,7 @@ vows
                 'and Given a request for a specified Document': {
                     topic: function(connectResponse, connection) {
                         var ee = new EventEmitter();
-                        connection.listDocuments(fixtures.documentId).then(function(response) {
+                        connection.getDocumentById(fixtures.documentId).then(function(response) {
                             ee.emit('success', response);
                         }, function(error) {
                             ee.emit('error', error);
@@ -101,7 +103,7 @@ vows
                 'and Given a request for children of a specified Document': {
                     topic: function(connectResponse, connection) {
                         var ee = new EventEmitter();
-                        connection.listDocuments(fixtures.documentId, {
+                        connection.getDocumentById(fixtures.documentId, {
                             populate: 'children'
                         }).then(function(response) {
                             ee.emit('success', response);
@@ -120,16 +122,87 @@ vows
 
                     'response should contain all documents': function(response) {
                         var types = _.uniq(_.pluck(response.data.children, '__t'));
-                        assert.lengthOf(types, 1);
+                        if (!_.isEmpty(types)) {
+                          assert.lengthOf(types, 1);
+                        }
                     },
 
                     'all results should have the same parent': function(response) {
-                        var types = _.uniq(_.pluck(response.data.children, 'parent'));
-                        assert.lengthOf(types, 1);
-
-                        assert.equal(fixtures.documentId, _.first(types));
+                        var parents = _.uniq(_.pluck(response.data.children, 'parent'));
+                        if (!_.isEmpty(parents)) {
+                          assert.lengthOf(parents, 1);
+                          assert.equal(_.first(parents), fixtures.documentId);
+                        }
                     }
-                }
+                },
+
+                'and Given a request for a Document by name': {
+                    topic: function(connectResponse, connection) {
+                        var ee = new EventEmitter();
+                        connection.getDocumentByName(fixtures.documentName).then(function(response) {
+                            ee.emit('success', response);
+                        }, function(error) {
+                            ee.emit('error', error);
+                        });
+                        return ee;
+                    },
+                    'request should return status(200)': function(response) {
+                        assert.equal(response.statusCode, 200);
+                    },
+
+                    'response should be an object': function(response) {
+                        assert.isObject(response.data);
+                    },
+
+                    'response should have a matching name': function(response) {
+                        assert.equal(fixtures.documentName, response.data.name);
+                    },
+
+                    'and Given a request to create a subdocument': {
+                        topic: function(byNameResponse, connectResponse, connection) {
+                            var ee = new EventEmitter();
+
+                            var newDocument = _.clone(fixtures.newDocument);
+
+                            newDocument.parent = byNameResponse.data._id;
+                            newDocument.type = byNameResponse.data.type;
+
+                            connection.createDocument(newDocument).then(function(response) {
+                                ee.emit('success', response);
+                            }, function(error) {
+                                ee.emit('error', error);
+                            });
+                            return ee;
+                        },
+                        'request should return status(201)': function(response) {
+                            assert.equal(response.statusCode, 201);
+                        },
+
+                        'response should be an object': function(response) {
+                            assert.isObject(response.data);
+                        },
+
+                        'response should have a matching name': function(response) {
+                            assert.equal(fixtures.newDocument.name, response.data.name);
+                        },
+
+                        'and Given a request to delete a document': {
+                            topic: function(createDocumentResponse, byNameResponse, connectResponse, connection) {
+                                var ee = new EventEmitter();
+                                connection.deleteDocument(createDocumentResponse.data._id).then(function(response) {
+                                    ee.emit('success', response);
+                                }, function(error) {
+                                    ee.emit('error', error);
+                                });
+                                return ee;
+                            },
+                            'request should return status(200)': function(response) {
+                                assert.equal(response.statusCode, 200);
+                            }
+                        },
+                    },
+                },
+
 
             }
         }
