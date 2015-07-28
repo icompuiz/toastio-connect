@@ -1,0 +1,99 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files (x86)\\nodejs\\\\node.exe',
+1 verbose cli   'C:\\Program Files (x86)\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'publish' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.32
+4 verbose node symlink C:\Program Files (x86)\nodejs\\node.exe
+5 verbose publish [ '.' ]
+6 verbose cache add [ '.', null ]
+7 verbose cache add name=undefined spec="." args=[".",null]
+8 verbose parsed url { protocol: null,
+8 verbose parsed url   slashes: null,
+8 verbose parsed url   auth: null,
+8 verbose parsed url   host: null,
+8 verbose parsed url   port: null,
+8 verbose parsed url   hostname: null,
+8 verbose parsed url   hash: null,
+8 verbose parsed url   search: null,
+8 verbose parsed url   query: null,
+8 verbose parsed url   pathname: '.',
+8 verbose parsed url   path: '.',
+8 verbose parsed url   href: '.' }
+9 silly lockFile 3a52ce78- .
+10 verbose lock . C:\Users\Isioma\AppData\Roaming\npm-cache\3a52ce78-.lock
+11 verbose tar pack [ 'C:\\Users\\Isioma\\AppData\\Roaming\\npm-cache\\toastio-connect\\0.0.0\\package.tgz',
+11 verbose tar pack   '.' ]
+12 verbose tarball C:\Users\Isioma\AppData\Roaming\npm-cache\toastio-connect\0.0.0\package.tgz
+13 verbose folder .
+14 info prepublish toastio-connect@0.0.0
+15 silly lockFile 1f1177db-tar tar://.
+16 verbose lock tar://. C:\Users\Isioma\AppData\Roaming\npm-cache\1f1177db-tar.lock
+17 silly lockFile ea9f4135-oastio-connect-0-0-0-package-tgz tar://C:\Users\Isioma\AppData\Roaming\npm-cache\toastio-connect\0.0.0\package.tgz
+18 verbose lock tar://C:\Users\Isioma\AppData\Roaming\npm-cache\toastio-connect\0.0.0\package.tgz C:\Users\Isioma\AppData\Roaming\npm-cache\ea9f4135-oastio-connect-0-0-0-package-tgz.lock
+19 silly lockFile 1f1177db-tar tar://.
+20 silly lockFile 1f1177db-tar tar://.
+21 silly lockFile ea9f4135-oastio-connect-0-0-0-package-tgz tar://C:\Users\Isioma\AppData\Roaming\npm-cache\toastio-connect\0.0.0\package.tgz
+22 silly lockFile ea9f4135-oastio-connect-0-0-0-package-tgz tar://C:\Users\Isioma\AppData\Roaming\npm-cache\toastio-connect\0.0.0\package.tgz
+23 silly lockFile e4970fdc-he-toastio-connect-0-0-0-package C:\Users\Isioma\AppData\Roaming\npm-cache\toastio-connect\0.0.0\package
+24 verbose lock C:\Users\Isioma\AppData\Roaming\npm-cache\toastio-connect\0.0.0\package C:\Users\Isioma\AppData\Roaming\npm-cache\e4970fdc-he-toastio-connect-0-0-0-package.lock
+25 silly lockFile e4970fdc-he-toastio-connect-0-0-0-package C:\Users\Isioma\AppData\Roaming\npm-cache\toastio-connect\0.0.0\package
+26 silly lockFile e4970fdc-he-toastio-connect-0-0-0-package C:\Users\Isioma\AppData\Roaming\npm-cache\toastio-connect\0.0.0\package
+27 silly lockFile 3a52ce78- .
+28 silly lockFile 3a52ce78- .
+29 silly publish { name: 'toastio-connect',
+29 silly publish   version: '0.0.0',
+29 silly publish   description: 'A wrapper for connection to a Toastio instance',
+29 silly publish   main: './index.js',
+29 silly publish   files: [ 'index.js' ],
+29 silly publish   scripts: { test: 'vows test/*.js --spec' },
+29 silly publish   dependencies: { lodash: '^3.10.0', q: '^1.4.1' },
+29 silly publish   devDependencies: { vows: '^0.8.1' },
+29 silly publish   gitHead: '3d283c62b423e044848127653b71b87a29a8c333',
+29 silly publish   readme: '# toastio-connect\r\nA library for interfacing with a Toastio CMS instance from any NOdeJS application\r\n',
+29 silly publish   readmeFilename: 'README.md',
+29 silly publish   _id: 'toastio-connect@0.0.0',
+29 silly publish   _shasum: '161095046c105c342a0629cee44df211c4c8dbbb',
+29 silly publish   _from: '.' }
+30 verbose request where is /toastio-connect
+31 verbose request registry https://registry.npmjs.org/
+32 verbose request id 9ade92e9ca872abd
+33 verbose url raw /toastio-connect
+34 verbose url resolving [ 'https://registry.npmjs.org/', './toastio-connect' ]
+35 verbose url resolved https://registry.npmjs.org/toastio-connect
+36 verbose request where is https://registry.npmjs.org/toastio-connect
+37 info trying registry request attempt 1 at 22:30:04
+38 http PUT https://registry.npmjs.org/toastio-connect
+39 http 403 https://registry.npmjs.org/toastio-connect
+40 verbose headers { 'content-type': 'application/json',
+40 verbose headers   'cache-control': 'max-age=60',
+40 verbose headers   'content-length': '95',
+40 verbose headers   'accept-ranges': 'bytes',
+40 verbose headers   date: 'Tue, 28 Jul 2015 02:30:04 GMT',
+40 verbose headers   via: '1.1 varnish',
+40 verbose headers   connection: 'keep-alive',
+40 verbose headers   'x-served-by': 'cache-dfw1820-DFW',
+40 verbose headers   'x-cache': 'MISS',
+40 verbose headers   'x-cache-hits': '0',
+40 verbose headers   'x-timer': 'S1438050604.511878,VS0,VE320' }
+41 error publish Failed PUT 403
+42 error Error: "You cannot publish over the previously published version 0.0.0." : toastio-connect
+42 error     at RegClient.<anonymous> (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:308:14)
+42 error     at Request._callback (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:246:65)
+42 error     at Request.self.callback (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\request\request.js:236:22)
+42 error     at Request.emit (events.js:98:17)
+42 error     at Request.<anonymous> (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\request\request.js:1142:14)
+42 error     at Request.emit (events.js:117:20)
+42 error     at IncomingMessage.<anonymous> (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\request\request.js:1096:12)
+42 error     at IncomingMessage.emit (events.js:117:20)
+42 error     at _stream_readable.js:943:16
+42 error     at process._tickCallback (node.js:419:13)
+43 error If you need help, you may report this *entire* log,
+43 error including the npm and node versions, at:
+43 error     <http://github.com/npm/npm/issues>
+44 error System Windows_NT 6.2.9200
+45 error command "C:\\Program Files (x86)\\nodejs\\\\node.exe" "C:\\Program Files (x86)\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "publish"
+46 error cwd C:\Users\Isioma\Code\toastio-connection
+47 error node -v v0.10.32
+48 error npm -v 1.4.28
+49 verbose exit [ 1, true ]
